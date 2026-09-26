@@ -36,8 +36,8 @@ load_dotenv()
 
 _client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
-FAST_MODEL = "qwen/qwen3.6-27b"
-REASONING_MODEL = "qwen/qwen3.6-27b"
+FAST_MODEL = "qwen/qwen3.8-27b"
+REASONING_MODEL = "qwen/qwen3.8-27b"
 
 _THINK_TAG_RE = re.compile(r"<think>.*?</think>", re.DOTALL)
 _reasoning_kwargs_supported = True  # flips to False the first time the SDK rejects them
