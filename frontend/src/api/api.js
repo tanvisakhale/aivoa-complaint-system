@@ -1,7 +1,9 @@
 // API client — Created by Tanvi Sakhale
 import axios from "axios";
 
-const api = axios.create({ baseURL: "/api" });
+const api = axios.create({
+  baseURL: "https://aivoa-complaint-system-08ca.onrender.com/api",
+});
 
 export const extractComplaint = async ({ file, text }) => {
   const form = new FormData();
