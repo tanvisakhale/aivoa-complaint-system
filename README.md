@@ -433,8 +433,6 @@ Sensitive credentials are not stored in the GitHub repository.
 GROQ_API_KEY=
 DATABASE_URL=
 
-Never commit .env files, API keys, or database passwords to GitHub.
-
 🎥 Demo Video
 
 The demo video should demonstrate:
@@ -514,18 +512,6 @@ Swagger API documentation
 Vercel deployment
 
 Render deployment
-
-⚠️ Notes
-
-Production-grade OCR is not implemented.
-
-Text-based PDF, DOCX, EML, and TXT documents are supported.
-
-AI-generated results are intended to assist the reviewer and should be
-reviewed before final submission.
-
-This project was developed as part of the AIVOA.AI Round 1 AI Product
-Engineer assignment.
 
 👩‍💻 Author
 
