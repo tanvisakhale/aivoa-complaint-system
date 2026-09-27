@@ -1,120 +1,546 @@
-# AIVOA.AI — AI-Powered Customer Complaint Management System
+AIVOA.AI — AI-Powered Customer Complaint Management System
 
-**Created by Tanvi Sakhale**
+Created by Tanvi Sakhale
 
-Round 1 assignment submission for AIVOA.AI — AI Product Engineer (Fresher).
-An AI-assisted Customer Complaint Management module for a pharmaceutical
-Quality Management System (QMS), covering API and Finished Dosage Form (FDF)
-complaints.
+An AI-powered Customer Complaint Management System developed as part of the
+AIVOA.AI Round 1 — AI Product Engineer (Fresher) assignment.
 
-## What it does
+The system helps pharmaceutical quality teams capture, analyze, assess, and
+manage customer complaints using an AI-assisted workflow.
 
-1. A reviewer drags & drops a complaint document (PDF/DOCX/TXT/EML) or pastes
-   complaint text/email into the **AI Complaint Intake Assistant** panel.
-2. The backend runs a **LangGraph** agent pipeline (`extract_fields →
-   completeness_check → risk_classification → duplicate_check →
-   root_cause_and_capa → summarize`) using **Groq** (`gemma2-9b-it` for fast
-   structured extraction, `llama-3.3-70b-versatile` for reasoning steps).
-3. The extracted fields auto-populate the **Log Customer Complaint** form
-   (Origin & Customer, Product & Batch, Complaint Details, Initial Assessment
-   & Priority).
-4. The AI panel also surfaces the bonus features: completeness score,
-   AI risk classification, duplicate complaint detection, root cause
-   suggestions, CAPA recommendations, and a complaint summary — plus a
-   chat box to ask follow-up questions about the complaint.
-5. The reviewer can edit any field and click **Save Complaint** to persist it.
+🚀 Live Demo
 
-## Tech stack (per assignment spec)
+🌐 Live Application
 
-| Layer            | Choice                                   |
-|-------------------|-------------------------------------------|
-| Frontend          | React + Redux Toolkit (Vite)             |
-| Backend           | Python + FastAPI                          |
-| AI agent framework| LangGraph                                 |
-| LLMs              | Groq — `gemma2-9b-it`, `llama-3.3-70b-versatile` |
-| Database          | PostgreSQL or MySQL (SQLAlchemy)          |
-| Font              | Google Inter                              |
+https://aivoa-complaint-system-plum.vercel.app/
 
-## Project structure
+📚 API Documentation
 
-```
+https://aivoa-complaint-system-08ca.onrender.com/docs
+
+💻 GitHub Repository
+
+https://github.com/tanvisakhale/aivoa-complaint-system
+
+🎥 Demo Video
+
+Coming Soon
+
+📌 Project Overview
+
+AIVOA.AI is an AI-assisted Customer Complaint Management System designed for
+pharmaceutical manufacturing environments.
+
+The application allows a reviewer to submit a complaint through uploaded
+documents or pasted complaint text. The system uses an AI workflow to extract
+structured information, analyze the complaint, classify risk, identify
+potential duplicates, recommend possible root causes and CAPA actions, and
+generate a complaint summary.
+
+The reviewer can review and edit AI-generated information before saving the
+complaint to the database.
+
+🎯 Problem Statement
+
+Pharmaceutical companies receive customer complaints through different
+channels such as emails, documents, and written reports.
+
+Manually processing these complaints can require significant effort to:
+
+Read and understand complaint information
+
+Extract important product and batch details
+
+Check whether required information is available
+
+Assess complaint risk
+
+Identify possible duplicate complaints
+
+Suggest potential root causes
+
+Recommend CAPA actions
+
+Prepare complaint summaries
+
+AIVOA.AI provides an AI-assisted workflow to help organize and accelerate
+these activities while keeping the reviewer in control of the final complaint.
+
+✨ Key Features
+
+1. AI Complaint Intake
+
+Users can provide complaint information by uploading a complaint document or
+pasting complaint text/email.
+
+Supported formats:
+
+PDF
+
+DOCX
+
+TXT
+
+EML
+
+2. AI-Powered Complaint Extraction
+
+The AI extracts relevant complaint information and populates the complaint
+form automatically, including customer, product, batch/lot, dates, quantity,
+complaint details, assessment, and priority.
+
+3. Complaint Completeness Checker
+
+Checks complaint information and provides a completeness assessment.
+
+4. AI Risk Classification
+
+Provides AI-assisted risk classification based on complaint information.
+
+5. Duplicate Complaint Detection
+
+Identifies potential similar or repeated complaints.
+
+6. Root Cause Recommendation
+
+Provides possible root-cause suggestions.
+
+7. CAPA Recommendation
+
+Generates AI-assisted Corrective Action and Preventive Action recommendations.
+
+8. Complaint Summary
+
+Generates a concise complaint summary.
+
+9. AI Assistant
+
+Allows reviewers to ask follow-up questions about the complaint.
+
+Example:
+
+Summarize this complaint.
+
+10. Complaint Management
+
+Supports creating, viewing, updating, and deleting complaints. Data is
+persisted in PostgreSQL.
+
+🧠 AI Workflow
+
+Complaint Input
+      ↓
+Document Parsing / Text Input
+      ↓
+AI Field Extraction
+      ↓
+Completeness Check
+      ↓
+Risk Classification
+      ↓
+Duplicate Detection
+      ↓
+Root Cause Recommendation
+      ↓
+CAPA Recommendation
+      ↓
+Complaint Summary
+      ↓
+Structured Complaint Form
+      ↓
+Reviewer Review / Edit
+      ↓
+PostgreSQL
+
+🏗️ System Architecture
+
+┌──────────────────────────────┐
+│      React + Redux           │
+│        Frontend              │
+└──────────────┬───────────────┘
+               │ Axios / REST API
+               ↓
+┌──────────────────────────────┐
+│       Python FastAPI         │
+│          Backend             │
+└──────────────┬───────────────┘
+               │
+       ┌───────┴────────┐
+       ↓                ↓
+┌──────────────┐  ┌──────────────┐
+│  LangGraph   │  │ PostgreSQL   │
+│  AI Workflow │  │   Database   │
+└──────┬───────┘  └──────────────┘
+       ↓
+┌──────────────┐
+│   Groq LLM   │
+└──────────────┘
+
+🛠️ Technology Stack
+
+Layer
+
+Technology
+
+Frontend
+
+React
+
+State Management
+
+Redux Toolkit
+
+Build Tool
+
+Vite
+
+Backend
+
+Python + FastAPI
+
+AI Agent Framework
+
+LangGraph
+
+LLM Provider
+
+Groq
+
+AI Model
+
+qwen/qwen3.8-27b
+
+Database
+
+PostgreSQL
+
+ORM
+
+SQLAlchemy
+
+API Client
+
+Axios
+
+Styling
+
+CSS
+
+Font
+
+Google Inter
+
+Frontend Deployment
+
+Vercel
+
+Backend Deployment
+
+Render
+
+📂 Project Structure
+
 aivoa-complaint-system/
+│
 ├── backend/
 │   ├── app/
-│   │   ├── main.py               # FastAPI routes
-│   │   ├── langgraph_workflow.py # LangGraph AI agent pipeline
-│   │   ├── groq_client.py        # Groq API wrapper
-│   │   ├── document_parser.py    # PDF/DOCX/EML/TXT text extraction
-│   │   ├── models.py             # SQLAlchemy models
-│   │   ├── schemas.py            # Pydantic schemas
-│   │   └── database.py           # DB session setup
+│   │   ├── main.py
+│   │   ├── langgraph_workflow.py
+│   │   ├── groq_client.py
+│   │   ├── document_parser.py
+│   │   ├── models.py
+│   │   ├── schemas.py
+│   │   └── database.py
 │   ├── requirements.txt
 │   └── .env.example
-└── frontend/
-    ├── src/
-    │   ├── App.jsx
-    │   ├── components/
-    │   │   ├── ComplaintForm.jsx  # Left panel — the complaint form
-    │   │   └── AICopilot.jsx      # Right panel — AI intake assistant
-    │   ├── store/                # Redux Toolkit slice + store
-    │   └── api/api.js            # Axios API client
-    ├── index.html
-    ├── package.json
-    └── vite.config.js
-```
+│
+├── frontend/
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── components/
+│   │   │   ├── ComplaintForm.jsx
+│   │   │   └── AICopilot.jsx
+│   │   ├── store/
+│   │   └── api/
+│   │       └── api.js
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js
+│
+└── README.md
 
-## Setup
+🔌 API Endpoints
 
-### 1. Backend
+Method
 
-```bash
-cd backend
-python -m venv venv && source venv/bin/activate   # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-cp .env.example .env   # then fill in GROQ_API_KEY and DATABASE_URL
-uvicorn app.main:app --reload --port 8000
-```
+Endpoint
 
-Get a free Groq API key at https://console.groq.com.
-Create a Postgres or MySQL database matching your `DATABASE_URL` before
-starting the server — tables are auto-created on first run.
+Description
 
-### 2. Frontend
+GET
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
+/
 
-Visit http://localhost:5173. Vite proxies `/api` calls to the backend on
-port 8000 (see `vite.config.js`).
+Backend health/root endpoint
 
-## Demo data
+POST
 
-Create a realistic pharma complaint email/PDF like:
+/api/extract
 
-```
+Extract complaint information
+
+GET
+
+/api/complaints
+
+Get all complaints
+
+POST
+
+/api/complaints
+
+Create a complaint
+
+GET
+
+/api/complaints/{complaint_id}
+
+Get a specific complaint
+
+PUT
+
+/api/complaints/{complaint_id}
+
+Update a complaint
+
+DELETE
+
+/api/complaints/{complaint_id}
+
+Delete a complaint
+
+POST
+
+/api/chat
+
+AI assistant
+
+Swagger: https://aivoa-complaint-system-08ca.onrender.com/docs
+
+🧪 Demo Test Data
+
 From: qa.reviewer@pharmaclient.com
+
 Subject: Product Complaint - Batch B4521
 
 We received a complaint from a customer regarding Metformin HCl 500mg
 Tablets, Batch/Lot B4521, manufactured 2025-11-02, expiring 2027-10-31.
+
 The customer (Ramesh Distributors) reported visible black specks in
-12 tablets out of a 100-tablet strip received on 2026-06-18. This is
-being reported as a critical quality complaint requiring urgent
+12 tablets out of a 100-tablet strip received on 2026-06-18.
+
+This is being reported as a critical quality complaint requiring urgent
 investigation.
-```
 
-Paste this into the AI Assistant panel to see the full extraction →
-completeness → risk classification → root cause/CAPA → summary pipeline
-run end-to-end.
+Expected Demo Flow
 
-## Notes
+Paste Complaint
+      ↓
+Click Extract
+      ↓
+AI Processes Complaint
+      ↓
+Complaint Fields Populated
+      ↓
+AI Analysis Displayed
+      ↓
+Review / Edit Information
+      ↓
+Save Complaint
+      ↓
+Complaint Stored in PostgreSQL
+      ↓
+Ask AI Assistant Questions
 
-- Production-grade OCR is not implemented per the assignment brief —
-  text-based PDFs/DOCX/EML/TXT are supported, which covers the demonstrated
-  workflow.
-- Bonus AI features implemented: Complaint Completeness Checker, Root Cause
-  Recommendation, Duplicate Complaint Detection, CAPA Recommendation,
-  Complaint Summary, and AI Risk Classification.
+💻 Local Setup
+
+Prerequisites
+
+Python 3.12+
+
+Node.js
+
+npm
+
+PostgreSQL
+
+Backend
+
+cd backend
+python -m venv venv
+
+Windows:
+
+venv\Scripts\activate
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+Create .env from .env.example:
+
+GROQ_API_KEY=your_groq_api_key
+DATABASE_URL=your_database_url
+
+Start the backend:
+
+uvicorn app.main:app --reload --port 8000
+
+Backend: http://localhost:8000
+
+Swagger: http://localhost:8000/docs
+
+Frontend
+
+cd frontend
+npm install
+npm run dev
+
+Open: http://localhost:5173
+
+☁️ Deployment
+
+Frontend — Vercel
+
+https://aivoa-complaint-system-plum.vercel.app/
+
+Backend — Render
+
+https://aivoa-complaint-system-08ca.onrender.com/
+
+API Documentation
+
+https://aivoa-complaint-system-08ca.onrender.com/docs
+
+Database
+
+PostgreSQL with SQLAlchemy is used for persistent complaint storage.
+
+🔐 Environment Variables
+
+Sensitive credentials are not stored in the GitHub repository.
+
+GROQ_API_KEY=
+DATABASE_URL=
+
+Never commit .env files, API keys, or database passwords to GitHub.
+
+🎥 Demo Video
+
+The demo video should demonstrate:
+
+Project introduction
+
+Opening the live application
+
+Submitting a pharmaceutical complaint
+
+AI extraction
+
+AI analysis
+
+Reviewing and editing the complaint
+
+Saving the complaint
+
+Viewing the saved complaint
+
+Using the AI assistant
+
+Brief technical architecture explanation
+
+Technical flow:
+
+React + Redux
+      ↓
+FastAPI
+      ↓
+LangGraph
+      ↓
+Groq LLM
+      ↓
+PostgreSQL
+
+📋 Assignment Requirements Covered
+
+React frontend
+
+Redux Toolkit
+
+FastAPI backend
+
+LangGraph workflow
+
+Groq LLM integration
+
+Complaint document upload
+
+Complaint text input
+
+AI field extraction
+
+Complaint completeness analysis
+
+AI risk classification
+
+Duplicate complaint detection
+
+Root-cause recommendations
+
+CAPA recommendations
+
+Complaint summary
+
+AI assistant
+
+Complaint CRUD operations
+
+PostgreSQL database
+
+REST APIs
+
+Swagger API documentation
+
+Vercel deployment
+
+Render deployment
+
+⚠️ Notes
+
+Production-grade OCR is not implemented.
+
+Text-based PDF, DOCX, EML, and TXT documents are supported.
+
+AI-generated results are intended to assist the reviewer and should be
+reviewed before final submission.
+
+This project was developed as part of the AIVOA.AI Round 1 AI Product
+Engineer assignment.
+
+👩‍💻 Author
+
+Tanvi Sakhale
+
+B.Sc. Computer Science Graduate
+
+GitHub:
+https://github.com/tanvisakhale
+
+Live Project:
+https://aivoa-complaint-system-plum.vercel.app/
+
+⭐ AIVOA.AI
+
+AI-Powered Customer Complaint Management System
+
+Built with React, FastAPI, LangGraph, Groq, and PostgreSQL.
